@@ -6,9 +6,9 @@
 
 import { Resend } from "resend"
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY || "re_ckWshaci_3siSYA8t84dmTPrq2xtjvhVY"
+const RESEND_API_KEY = process.env.RESEND_API_KEY || "re_ZQULjaLF_Pnw6TYhi6eb1gjqJjb8h7qcr"
 const EMAIL_FROM = process.env.EMAIL_FROM || "onboarding@resend.dev"
-const TEST_EMAIL = "benjacostm100@gmail.com"
+const TEST_EMAIL = "floppodsshopify@gmail.com" // Email de la cuenta Resend (único permitido sin dominio verificado)
 
 async function testResend() {
   console.log("🧪 Testeando Resend...")
