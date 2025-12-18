@@ -25,7 +25,7 @@ export default function HomePage() {
 
           <p className="text-lg sm:text-xl md:text-2xl text-[#D9D9D9] max-w-3xl mx-auto leading-relaxed px-4">
             La guía paso a paso que me llevó de ser un chico normal a generar más de{" "}
-            <strong className="text-[#00FF9D]">50.000€ al mes</strong> con 19 años gracias a la reventa online.
+            <strong className="text-[#00FF9D]">5 cifras cada mes</strong> con 19 años gracias a la reventa online.
           </p>
 
           <p className="text-base sm:text-lg text-[#CFCFCF] max-w-2xl mx-auto px-4">
@@ -40,7 +40,7 @@ export default function HomePage() {
               className="bg-[#00FF9D] hover:bg-[#00E589] text-[#000000] font-bold text-lg px-8 py-6 group"
             >
               <Link href="/login">
-                Comenzar Ahora
+                Soy Alumno
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>

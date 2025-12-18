@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
+import Link from "next/link"
 
 interface SilverPricingCardProps {
   duration: string
@@ -11,6 +12,7 @@ interface SilverPricingCardProps {
 
 export function SilverPricingCard({ duration, price, durationText }: SilverPricingCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const [isButtonHovered, setIsButtonHovered] = useState(false)
 
   return (
     <div 
@@ -69,8 +71,8 @@ export function SilverPricingCard({ duration, price, durationText }: SilverPrici
 
       {/* Descripción */}
       <div className="space-y-1 mb-4">
-        <p className="text-white/90 text-base">Acceso completo a AxelScale</p>
-        <p className="text-white/90 text-base">
+        <p className="text-white/90 text-base" style={{fontFamily: "'Albert Sans', sans-serif"}}>Acceso completo a AxelScale</p>
+        <p className="text-white/90 text-base" style={{fontFamily: "'Albert Sans', sans-serif"}}>
           durante <span className="font-bold">{durationText}</span>
         </p>
       </div>
@@ -83,14 +85,56 @@ export function SilverPricingCard({ duration, price, durationText }: SilverPrici
 
       {/* Texto pequeño - mismo formato que descripción */}
       <div className="space-y-1 mb-6">
-        <p className="text-white/90 text-base">Después, 100 €/mes.</p>
-        <p className="text-white/90 text-base">Cancela cuando quieras.</p>
+        <p className="text-white/90 text-base" style={{fontFamily: "'Albert Sans', sans-serif"}}>Después, 100 €/mes.</p>
+        <p className="text-white/90 text-base" style={{fontFamily: "'Albert Sans', sans-serif"}}>Cancela cuando quieras.</p>
       </div>
 
-      {/* Botón */}
-      <Button className="w-auto px-10 bg-[#36d67a] hover:bg-[#2bc46a] text-black h-14 rounded-full text-2xl uppercase transition-all" style={{fontFamily: "'Montserrat', sans-serif", fontWeight: 800}}>
-        ELEGIR PLAN
-      </Button>
+      {/* Botón con enlace y efecto hover */}
+      <Link href="/subscribe" passHref>
+        <Button 
+          className="w-auto px-10 h-14 rounded-full text-2xl uppercase transition-all relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(180deg, #36d67a 0%, #2bc46a 70%, #1fa855 100%)',
+            color: 'black',
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: 800,
+            boxShadow: isButtonHovered 
+              ? '0 0 35px rgba(54, 214, 122, 0.6), 0 0 80px rgba(54, 214, 122, 0.3)'
+              : '0 0 20px rgba(54, 214, 122, 0.4)',
+            transform: isButtonHovered ? 'scale(1.05)' : 'scale(1)',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseEnter={() => setIsButtonHovered(true)}
+          onMouseLeave={() => setIsButtonHovered(false)}
+        >
+          {/* Efecto de brillo en hover */}
+          {isButtonHovered && (
+            <div 
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 20%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0.25) 80%, transparent 100%)',
+                animation: 'shine 1.5s ease-in-out infinite',
+                borderRadius: '9999px'
+              }}
+            />
+          )}
+          
+          {/* Contenido del botón */}
+          <span className="relative z-10">ELEGIR PLAN</span>
+        </Button>
+      </Link>
+
+      {/* Estilos para la animación de brillo */}
+      <style jsx>{`
+        @keyframes shine {
+          0% {
+            transform: translateX(-100%) skewX(-15deg);
+          }
+          100% {
+            transform: translateX(200%) skewX(-15deg);
+          }
+        }
+      `}</style>
     </div>
   )
 }

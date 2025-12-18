@@ -2,9 +2,11 @@
 
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
+import Link from "next/link"
 
 export function GoldPricingCard() {
   const [isHovered, setIsHovered] = useState(false)
+  const [isButtonHovered, setIsButtonHovered] = useState(false)
 
   return (
     <div 
@@ -39,7 +41,7 @@ export function GoldPricingCard() {
       {/* Duración */}
       <div className="mb-1">
         <h3 className="text-2xl uppercase tracking-wider"
-            style={{fontFamily: "'Montserrat', sans-serif", fontWeight: 800, letterSpacing: '0.1em', color: 'white'}}>
+            style={{fontFamily: "'Albert Sans', sans-serif", fontWeight: 800, letterSpacing: '0.1em', color: 'white'}}>
           3 MESES
         </h3>
       </div>
@@ -85,8 +87,8 @@ export function GoldPricingCard() {
 
       {/* Descripción */}
       <div className="space-y-1 mb-4">
-        <p className="text-white/90 text-base">Acceso completo a Axelscale</p>
-        <p className="text-white/90 text-base">
+        <p className="text-white/90 text-base" style={{fontFamily: "'Albert Sans', sans-serif"}}>Acceso completo a Axelscale</p>
+        <p className="text-white/90 text-base" style={{fontFamily: "'Albert Sans', sans-serif"}}>
           durante <span className="font-bold">3 meses</span>
         </p>
       </div>
@@ -99,20 +101,56 @@ export function GoldPricingCard() {
 
       {/* Texto pequeño - mismo formato que descripción */}
       <div className="space-y-1 mb-6">
-        <p className="text-white/90 text-base">Después, 100 €/mes.</p>
-        <p className="text-white/90 text-base">Cancela cuando quieras.</p>
+        <p className="text-white/90 text-base" style={{fontFamily: "'Albert Sans', sans-serif"}}>Después, 100 €/mes.</p>
+        <p className="text-white/90 text-base" style={{fontFamily: "'Albert Sans', sans-serif"}}>Cancela cuando quieras.</p>
       </div>
 
-      {/* Botón dorado */}
-      <Button className="w-auto px-8 text-black h-14 rounded-full text-2xl uppercase transition-all tracking-tight"
+      {/* Botón dorado con enlace */}
+      <Link href="/subscribe" passHref>
+        <Button 
+          className="w-auto px-8 text-black h-14 rounded-full text-2xl uppercase transition-all tracking-tight relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(180deg, #ffd77a 0%, #d4af37 70%, #b98b1e 100%)',
+            boxShadow: isButtonHovered 
+              ? '0 0 45px rgba(212,175,55,0.7), 0 0 90px rgba(212,175,55,0.35)'
+              : '0 0 25px rgba(212,175,55,0.5)',
+            fontFamily: "'Rude', sans-serif",
+            fontWeight: 800,
+            letterSpacing: '0.05em',
+            transform: isButtonHovered ? 'scale(1.05)' : 'scale(1)',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseEnter={() => setIsButtonHovered(true)}
+          onMouseLeave={() => setIsButtonHovered(false)}
+        >
+          {/* Efecto de brillo metálico en hover */}
+          {isButtonHovered && (
+            <div 
+              className="absolute inset-0 pointer-events-none"
               style={{
-                background: 'linear-gradient(180deg, #ffd77a 0%, #d4af37 70%, #b98b1e 100%)',
-                boxShadow: '0 0 25px rgba(212,175,55,0.5)',
-                fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 900,
-              }}>
-        ELEGIR ESTE PLAN
-      </Button>
+                background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.15) 20%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.15) 80%, transparent 100%)',
+                animation: 'shine 1.5s ease-in-out infinite',
+                borderRadius: '9999px'
+              }}
+            />
+          )}
+          
+          {/* Contenido del botón */}
+          <span className="relative z-10">ELEGIR ESTE PLAN</span>
+        </Button>
+      </Link>
+
+      {/* Estilos para la animación de brillo */}
+      <style jsx>{`
+        @keyframes shine {
+          0% {
+            transform: translateX(-100%) skewX(-15deg);
+          }
+          100% {
+            transform: translateX(200%) skewX(-15deg);
+          }
+        }
+      `}</style>
     </div>
   )
 }

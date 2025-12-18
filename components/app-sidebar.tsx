@@ -50,6 +50,8 @@ interface AppSidebarProps {
 export function AppSidebar({ isOpen, onToggle, user, modules }: AppSidebarProps) {
   const pathname = usePathname()
   const [expandedModules, setExpandedModules] = useState<string[]>([])
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
+  const [logoutProgress, setLogoutProgress] = useState(0)
 
   const isAdmin = user.role === "ADMIN"
 
@@ -63,6 +65,35 @@ export function AppSidebar({ isOpen, onToggle, user, modules }: AppSidebarProps)
 
   const isActiveModule = (moduleSlug: string) => {
     return pathname === `/app/module/${moduleSlug}`
+  }
+
+  const handleLogout = async () => {
+    if (isLoggingOut) return
+    
+    setIsLoggingOut(true)
+    
+    // Animación de progreso
+    const interval = setInterval(() => {
+      setLogoutProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval)
+          return 100
+        }
+        return prev + 10
+      })
+    }, 40)
+    
+    // Esperar a que la animación se complete
+    await new Promise(resolve => setTimeout(resolve, 500))
+    
+    try {
+      await fetch("/api/auth/logout", { method: "POST" })
+    } catch (error) {
+      console.error("Error logging out:", error)
+    }
+    
+    // Redirigir al login
+    window.location.href = "/login"
   }
 
   return (
@@ -252,14 +283,36 @@ export function AppSidebar({ isOpen, onToggle, user, modules }: AppSidebarProps)
           )}
 
           <button
-            onClick={async () => {
-              await fetch("/api/auth/logout", { method: "POST" })
-              window.location.href = "/login"
-            }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-400/10 transition-all duration-200"
+            onClick={handleLogout}
+            disabled={isLoggingOut}
+            className="relative w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-400/10 transition-all duration-200 disabled:opacity-80 disabled:cursor-not-allowed overflow-hidden"
           >
-            <LogOut className="h-5 w-5" />
-            <span className="font-body font-medium text-sm">Cerrar Sesión</span>
+            {/* Barra de progreso */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-red-400/5 to-red-400/20"
+              initial={{ width: "0%" }}
+              animate={{ width: `${logoutProgress}%` }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            />
+            
+            {/* Contenido del botón */}
+            <div className="relative z-10 flex items-center gap-3">
+              <LogOut className="h-5 w-5" />
+              <span className="font-body font-medium text-sm">
+                {isLoggingOut ? "Cerrando sesión..." : "Cerrar Sesión"}
+              </span>
+            </div>
+            
+            {/* Indicador de carga */}
+            {isLoggingOut && (
+              <div className="relative z-10 ml-auto">
+                <motion.div
+                  className="w-4 h-4 border-2 border-red-400/30 border-t-red-400 rounded-full"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                />
+              </div>
+            )}
           </button>
 
           <a
