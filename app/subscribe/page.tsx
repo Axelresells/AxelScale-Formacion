@@ -8,6 +8,7 @@ import Image from "next/image"
 import Script from "next/script"
 import { GoldPricingCard } from "@/components/gold-pricing-card"
 import { SilverPricingCard } from "@/components/silver-pricing-card"
+import {DiamondPricingCard} from "@/components/diamond-pricing-card";
 
 export default async function SubscribePage() {
   const user = await getSession()
@@ -96,7 +97,7 @@ export default async function SubscribePage() {
               <GoldPricingCard userEmail={user?.email} />
 
               {/* Card 3 - 1 AÑO */}
-              <SilverPricingCard 
+              <DiamondPricingCard
                 duration="1 AÑO" 
                 price="750€" 
                 durationText="12 meses" 

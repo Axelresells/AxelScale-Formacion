@@ -148,7 +148,7 @@ export function GoldPricingCard({ userEmail }: GoldPricingCardProps) {
 
       {/* Texto pequeño - mismo formato que descripción */}
       <div className="space-y-1 mb-6">
-        <p className="text-white/90 text-base" style={{fontFamily: "'Albert Sans', sans-serif"}}>Después, 100 €/mes.</p>
+        <p className="text-white/90 text-base" style={{fontFamily: "'Albert Sans', sans-serif"}}>Después, 66 €/mes.</p>
         <p className="text-white/90 text-base" style={{fontFamily: "'Albert Sans', sans-serif"}}>Cancela cuando quieras.</p>
       </div>
 
