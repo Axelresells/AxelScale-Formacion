@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, MessageCircle, Calendar } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 export default function HomePage() {
   return (
@@ -20,18 +19,8 @@ export default function HomePage() {
           </div>
 
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl uppercase leading-tight">
-            <span className="text-[#FFFFFF]">AXELSCALE</span> <span className="text-[#DAA520] glow-gold">2.0</span>
+            <span className="text-[#FFFFFF]">AXELSCALE</span>
           </h1>
-
-          <p className="text-lg sm:text-xl md:text-2xl text-[#D9D9D9] max-w-3xl mx-auto leading-relaxed px-4">
-            La guía paso a paso que me llevó de ser un chico normal a generar más de{" "}
-            <strong className="text-[#00FF9D]">5 cifras cada mes</strong> con 19 años gracias a la reventa online.
-          </p>
-
-          <p className="text-base sm:text-lg text-[#CFCFCF] max-w-2xl mx-auto px-4">
-            Aprendé los métodos reales, probados y escalables que utilizo hoy para crear negocios digitales rentables,
-            incluso empezando desde cero.
-          </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
             <Button
