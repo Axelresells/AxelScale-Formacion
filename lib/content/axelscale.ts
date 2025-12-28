@@ -73,23 +73,23 @@ Crea tu producto digital en 5 sencillos pasos
 Sigue esta guía paso a paso para crear tu primer producto digital de forma rápida y efectiva.
 
 ### 1. Buscar Google Doc
-** Búsqueda**
+**Búsqueda**
 Vas a ir a Google y vas a buscar Google Doc
 
 ### 2. Crear Documento
-** Creación**
+**Creación**
 Vas a crear un documento de Google
 
 ### 3. Escribir Información
-** Contenido**
+**Contenido**
 Escribes la información de tu producto digital
 
 ### 4. Configurar Permisos
-** Importante**
+**Importante**
 Pones que los que tengan el enlace lo puedan leer pero no editar (importante)
 
 ### 5. Alternativa: Google Sheets
-** Opción**
+**Opción**
 También lo puedes crear desde Google Sheet (Formato Excel), en vez de Google Doc (Formato Word).
 
 ## Resumen de Opciones
@@ -127,7 +127,7 @@ Mira este video para configurar el envío contra reembolso en Shopify:
  Configuración envío contra reembolso (8:45 min)
 
 ### 3. Imágenes de productos
-** Crítico**
+**Crítico**
 NO pongáis fotos de los productos reales, haced ilustraciones de ellos.
 
 **Advertencia importante**: Usar fotos reales puede llevar a problemas legales y de derechos de autor.
@@ -304,8 +304,6 @@ Puedes tomar como base las de **axelresells.com** y adaptarlas para tu web.
  id: "les_2_1",
  title: "S.P.F Qué Productos Físicos Vender",
  content: `# S.P.F Qué Productos Físicos Vender
-
-Si no tenéis proveedores, os recomiendo los míos [axelresells.com](http://axelresells.com), así tenéis fiabilidad y seguridad de que son buenos proveedores, y no tenéis que iros gastando dinero hasta encontrar unos buenos. (NO vienen incluidos en AxelScale 2.0, están aparte).
 
 ## Mis principales recomendaciones:
 

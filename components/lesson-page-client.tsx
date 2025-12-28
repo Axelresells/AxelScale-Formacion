@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ArrowLeft, ArrowRight, Clock, BookOpen } from "lucide-react"
 import type { Lesson, Module } from "@/lib/content/axelscale"
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 
 interface LessonPageClientProps {
   lesson: Lesson
@@ -68,9 +71,47 @@ export function LessonPageClient({ lesson, module, moduleLessons }: LessonPageCl
         )}
 
         {/* Lesson content */}
-        <div className="prose prose-invert max-w-none">
-          <p className="font-body text-[#D9D9D9] text-lg leading-relaxed whitespace-pre-wrap">{lesson.content}</p>
-        </div>
+          <div className="prose prose-invert max-w-none">
+              <div className="font-body text-[#D9D9D9] text-lg leading-relaxed">
+                  <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                      components={{
+                          h1: ({node, ...props}) => <h1 className="text-3xl font-display text-[#FFFFFF] mb-4" {...props} />,
+                          h2: ({node, ...props}) => <h2 className="text-2xl font-display text-[#FFFFFF] mb-3" {...props} />,
+                          h3: ({node, ...props}) => <h3 className="text-xl font-display text-[#FFFFFF] mb-2" {...props} />,
+                          p: ({node, ...props}) => <p className="mb-4" {...props} />,
+                          a: ({node, ...props}) => (
+                              <a
+                                  className="text-[#00FF9D] hover:text-[#00E589] underline transition-colors"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  {...props}
+                              />
+                          ),
+                          strong: ({node, ...props}) => <strong className="font-bold text-[#FFFFFF]" {...props} />,
+                          em: ({node, ...props}) => <em className="italic text-[#D9D9D9]" {...props} />,
+                          ul: ({node, ...props}) => <ul className="list-disc ml-6 mb-4" {...props} />,
+                          ol: ({node, ...props}) => <ol className="list-decimal ml-6 mb-4" {...props} />,
+                          li: ({node, ...props}) => <li className="mb-2" {...props} />,
+                          code: ({node, className, children, ...props}) => {
+                              const isInline = !className
+                              return isInline ? (
+                                  <code className="bg-[#1A1A1A] px-2 py-1 rounded text-[#00FF9D]" {...props}>{children}</code>
+                              ) : (
+                                  <code className={className} {...props}>{children}</code>
+                              )
+                          },
+                          pre: ({node, ...props}) => <pre className="bg-[#1A1A1A] p-4 rounded-lg overflow-x-auto mb-4" {...props} />,
+                      }}
+                  >
+                      {lesson.content}
+                  </ReactMarkdown>
+
+              </div>
+          </div>
+
+
       </motion.div>
 
       {/* Navigation */}

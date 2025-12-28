@@ -37,6 +37,7 @@ export function DashboardContent({ modules, totalLessons, showMockBanner }: Dash
         <h1 className="font-display text-4xl sm:text-5xl text-foreground mb-2">
           Bienvenido a <span className="text-gradient-gold text-[#DAA520] ">AXELSCALE</span>
         </h1>
+          <div> <a href="https://discord.gg/dESsRhG3" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white font-semibold px-6 py-3 rounded-lg transition-colors"  > Únete a nuestra comunidad de Discord </a> </div>
       </motion.div>
 
       {/* Video de Presentación */}
@@ -45,21 +46,22 @@ export function DashboardContent({ modules, totalLessons, showMockBanner }: Dash
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.05, duration: 0.5 }}
       >
-        <div className="bg-card/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50">
-          <div className="aspect-video w-full">
-            <iframe
-              src="https://www.youtube.com/embed/j5M22pWW1aI?autoplay=1&mute=1"
-              title="Video de Presentación AXELSCALE"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full"
-            />
+          <div className="bg-card/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50 max-w-3xl mx-auto">
+              <div className="aspect-video w-full">
+                  <iframe
+                      src="https://www.youtube.com/embed/j5M22pWW1aI?autoplay=1&mute=1"
+                      title="Video de Presentación AXELSCALE"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full"
+                  />
+              </div>
           </div>
-        </div>
+
       </motion.div>
 
       {/* Stats */}
-      <motion.div
+        { /* <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.5 }}
@@ -88,7 +90,7 @@ export function DashboardContent({ modules, totalLessons, showMockBanner }: Dash
             </div>
           </motion.div>
         ))}
-      </motion.div>
+      </motion.div> */}
 
       {/* Plan 50 Days CTA */}
       <motion.div
