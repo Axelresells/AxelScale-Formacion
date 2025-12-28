@@ -254,3 +254,180 @@ export async function sendMagicLinkEmail(email: string, token: string) {
     return magicUrl
   }
 }
+
+export async function sendPaymentConfirmationEmail(
+    email: string,
+    plan: string
+) {
+    const resend = getResend()
+
+    if (!resend) {
+        console.warn("[Resend] Email no configurado - solo logging de confirmación")
+        console.log("[v0] 📧 Confirmación de pago para:", email, "Plan:", plan)
+        return
+    }
+
+    const emailFrom = process.env.EMAIL_FROM
+
+    if (!emailFrom) {
+        console.error("[Resend] EMAIL_FROM no configurado")
+        return
+    }
+
+    const planNames: Record<string, string> = {
+        monthly: "1 Mes",
+        quarterly: "3 Meses",
+        annual: "12 Meses",
+    }
+
+    const planName = planNames[plan] || plan
+
+    try {
+        const { data, error } = await resend.emails.send({
+            from: emailFrom,
+            to: email,
+            subject: "¡Pago confirmado! Bienvenido a AxelScale",
+            html: `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style>
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #f4f4f4;
+              }
+              .container {
+                background-color: #ffffff;
+                border-radius: 8px;
+                padding: 40px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+              }
+              .logo {
+                text-align: center;
+                margin-bottom: 30px;
+              }
+              .logo h1 {
+                color: #DAA520;
+                font-size: 32px;
+                margin: 0;
+                font-weight: bold;
+              }
+              .success-icon {
+                text-align: center;
+                font-size: 64px;
+                margin: 20px 0;
+              }
+              .content {
+                margin: 30px 0;
+              }
+              .info-box {
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                padding: 20px;
+                margin: 20px 0;
+              }
+              .info-row {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 0;
+                border-bottom: 1px solid #e0e0e0;
+              }
+              .info-row:last-child {
+                border-bottom: none;
+              }
+              .info-label {
+                font-weight: 600;
+                color: #666;
+              }
+              .info-value {
+                color: #333;
+              }
+              .button {
+                display: inline-block;
+                padding: 14px 32px;
+                background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+                color: #ffffff !important;
+                text-decoration: none;
+                border-radius: 8px;
+                font-weight: 600;
+                margin: 20px 0;
+                text-align: center;
+              }
+              .footer {
+                margin-top: 40px;
+                padding-top: 20px;
+                border-top: 1px solid #e0e0e0;
+                font-size: 12px;
+                color: #888;
+                text-align: center;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="logo">
+                <h1>AXELSCALE</h1>
+              </div>
+              
+              
+              <div class="content">
+                <h2 style="color: #333; text-align: center; margin-bottom: 20px;">
+                  ¡Pago Confirmado!
+                </h2>
+                <p style="text-align: center; font-size: 16px;">
+                  Tu suscripción a <strong>AxelScale</strong> ha sido activada correctamente.
+                </p>
+                
+                <div class="info-box">
+                  <div class="info-row">
+                    <span class="info-label">Plan:</span>
+                    <span class="info-value"><strong>${planName}</strong></span>
+                  </div>
+                  <div class="info-row">
+                    <span class="info-label">Email:</span>
+                    <span class="info-value">${email}</span>
+                  </div>
+                </div>
+                
+                
+                <div style="text-align: center; margin: 30px 0;">
+                  <a href="${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/app" class="button">
+                    Acceder a la Plataforma
+                  </a>
+                </div>
+                <div style="text-align: center; margin: 20px 0;">
+                  <a href="https://discord.gg/dESsRhG3" class="button" style="background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);">
+                    Únete a Discord
+                  </a>
+                </div>
+                
+              </div>
+              
+              <div class="footer">
+                <p>© ${new Date().getFullYear()} AxelScale. Todos los derechos reservados.</p>
+                <p>Gracias por confiar en nosotros para tu crecimiento profesional.</p>
+              </div>
+            </div>
+          </body>
+        </html>
+      `,
+        })
+
+        if (error) {
+            console.error("[Resend] Error enviando confirmación:", error)
+            return
+        }
+
+        console.log("[Resend] ✅ Email de confirmación enviado:", data?.id)
+    } catch (error) {
+        console.error("[Resend] Exception enviando confirmación:", error)
+    }
+}
+

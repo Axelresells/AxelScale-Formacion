@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import { getStripe } from "@/lib/stripe"
 import { db } from "@/lib/db"
 import type Stripe from "stripe"
+import { sendPaymentConfirmationEmail } from "@/lib/auth"
 
 export const dynamic = "force-dynamic"
 
@@ -132,6 +133,8 @@ export async function POST(request: NextRequest) {
         })
 
         console.log("[Stripe Webhook] ✅ Subscription updated correctly")
+        await sendPaymentConfirmationEmail(email, plan)
+
         break
       }
 
