@@ -387,10 +387,6 @@ export async function sendPaymentConfirmationEmail(
                 
                 <div class="info-box">
                   <div class="info-row">
-                    <span class="info-label">Plan:</span>
-                    <span class="info-value"><strong>${planName}</strong></span>
-                  </div>
-                  <div class="info-row">
                     <span class="info-label">Email:</span>
                     <span class="info-value">${email}</span>
                   </div>
