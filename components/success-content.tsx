@@ -60,7 +60,7 @@ export default function SuccessContent({ user }: SuccessContentProps) {
             </h1>
 
             <p className="text-lg text-[#D9D9D9] mb-8">
-              Tu suscripción se ha activado correctamente. Ya tenés acceso completo a todos los módulos y recursos.
+              Tu suscripción se ha activado correctamente.
             </p>
           </motion.div>
 
@@ -94,7 +94,7 @@ export default function SuccessContent({ user }: SuccessContentProps) {
           </motion.div>
 
           {/* Features */}
-          <motion.div
+            {/*<motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
@@ -116,7 +116,7 @@ export default function SuccessContent({ user }: SuccessContentProps) {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </motion.div>*/}
         </motion.div>
       </div>
     </div>
