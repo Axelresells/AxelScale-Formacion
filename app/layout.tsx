@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   description:
     "La guía paso a paso que me llevó de ser un chico normal a generar más de 50.000€ al mes con 19 años gracias a la reventa online.",
   generator: "v0.app",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
   icons: {
     icon: [
       {
