@@ -51,10 +51,10 @@ export default async function SubscribePage() {
 
         <div className="relative z-10">
           {/* Header Section */}
-          <div className="py-6 px-4">
+          <div className="py-1 md:py-6 px-4">
             <div className="max-w-6xl mx-auto text-center">
               {/* Logo */}
-              <div className="mb-3">
+              <div className="mb-0 md:mb-3">
                 <div className="inline-block">
                   <div className="w-20 h-20 mx-auto mb-2 relative">
                     <Image 
@@ -68,7 +68,7 @@ export default async function SubscribePage() {
               </div>
 
               {/* Title */}
-              <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl uppercase text-white tracking-wide mb-8 text-center"
+              <h1 className="font-bold text-2xl sm:text-4xl md:text-5xl uppercase text-white tracking-wide mb-2 text-center"
                   style={{
                     textShadow: '0 2px 10px rgba(255,255,255,0.1)',
                     fontFamily: "'Anton', 'Impact', sans-serif",
@@ -80,9 +80,9 @@ export default async function SubscribePage() {
           </div>
 
           {/* Pricing Grid */}
-          <div className="py-8 px-4">
+          <div className="py-4 px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pl-2 pr-2">
               
               {/* Card 1 - 1 MES */}
               <SilverPricingCard 

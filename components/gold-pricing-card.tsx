@@ -57,7 +57,7 @@ export function GoldPricingCard({ userEmail }: GoldPricingCardProps) {
 
   return (
     <div 
-      className="rounded-3xl py-12 px-4 text-center relative transition-all duration-300 group"
+      className="rounded-3xl py-8 md:py-12 px-4 text-center relative transition-all duration-300 group"
       style={{
         position: 'relative',
         background: 'rgba(10,10,10,0.9)',
@@ -86,7 +86,7 @@ export function GoldPricingCard({ userEmail }: GoldPricingCardProps) {
            }}></div>
 
       {/* Duración */}
-      <div className="mb-1">
+      <div className="mb-5 md:mb-1">
         <h3 className="text-2xl uppercase tracking-wider"
             style={{fontFamily: "'Albert Sans', sans-serif", fontWeight: 800, letterSpacing: '0.1em', color: 'white'}}>
           3 MESES
@@ -112,7 +112,7 @@ export function GoldPricingCard({ userEmail }: GoldPricingCardProps) {
 
       {/* Precio dorado con efecto metálico */}
       <div className="mb-4">
-        <div className="text-7xl leading-none"
+        <div className="text-6xl md:text-7xl leading-none"
              style={{
                fontFamily: "'Montserrat', sans-serif",
                fontWeight: 800,

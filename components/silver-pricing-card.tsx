@@ -61,7 +61,7 @@ export function SilverPricingCard({ duration, price, durationText, plan, userEma
 
   return (
     <div 
-      className="rounded-3xl py-12 px-4 text-center relative transition-all duration-300"
+      className="rounded-3xl py-8 md:py-12 px-4 text-center relative transition-all duration-300"
       style={{
         position: 'relative',
         background: 'rgba(10,10,10,0.92)',
@@ -90,7 +90,7 @@ export function SilverPricingCard({ duration, price, durationText, plan, userEma
            }}></div>
 
       {/* Duración */}
-      <div className="mb-10">
+      <div className="mb-5 md:mb-10">
         <h3 className="text-2xl uppercase tracking-wider"
             style={{fontFamily: "'Montserrat', sans-serif", fontWeight: 800, letterSpacing: '0.1em', color: 'white'}}>
           {duration}
@@ -105,7 +105,7 @@ export function SilverPricingCard({ duration, price, durationText, plan, userEma
 
       {/* Precio */}
       <div className="mb-4">
-        <div className="text-7xl leading-none" style={{fontFamily: "'Montserrat', sans-serif", fontWeight: 800, color: 'white'}}>{price}</div>
+        <div className="text-6xl md:text-7xl leading-none" style={{fontFamily: "'Montserrat', sans-serif", fontWeight: 800, color: 'white'}}>{price}</div>
       </div>
 
       {/* Línea blanca divisoria */}
