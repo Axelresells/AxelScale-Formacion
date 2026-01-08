@@ -156,7 +156,7 @@ export function GoldPricingCard({ userEmail }: GoldPricingCardProps) {
       <Button 
         onClick={handleSubscribe}
         disabled={isLoading}
-        className="w-auto px-8 text-black h-14 rounded-full text-2xl uppercase transition-all tracking-tight relative overflow-hidden"
+        className="w-auto px-8 text-black h-14 rounded-full text-1xl md:text-2xl uppercase transition-all tracking-tight relative overflow-hidden"
         style={{
           background: 'linear-gradient(180deg, #ffd77a 0%, #d4af37 70%, #b98b1e 100%)',
           boxShadow: isButtonHovered 

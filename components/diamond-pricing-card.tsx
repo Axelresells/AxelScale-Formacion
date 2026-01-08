@@ -137,7 +137,7 @@ export function DiamondPricingCard({ duration, price, durationText, plan, userEm
       <Button 
         onClick={handleSubscribe}
         disabled={isLoading}
-        className="w-auto px-10 h-14 rounded-full text-2xl uppercase transition-all relative overflow-hidden"
+        className="w-auto px-10 h-14 rounded-full text-1xl md:text-2xluppercase transition-all relative overflow-hidden"
         style={{
           background: 'linear-gradient(180deg, #36d67a 0%, #2bc46a 70%, #1fa855 100%)',
           color: 'black',
