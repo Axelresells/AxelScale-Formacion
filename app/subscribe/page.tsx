@@ -72,7 +72,7 @@ export default async function SubscribePage() {
                   style={{
                     textShadow: '0 2px 10px rgba(255,255,255,0.1)',
                     fontFamily: "'Anton', 'Impact', sans-serif",
-                    letterSpacing: '0.05em'
+                    letterSpacing: '0.12em'
                   }}>
                 SELECCIONA TU PLAN DE ACCESO
               </h1>
