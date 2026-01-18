@@ -320,7 +320,7 @@ export function AppSidebar({ isOpen, onToggle, user, modules }: AppSidebarProps)
             )}
           </button>
             <a
-                href="https://discord.gg/dESsRhG3"
+                href="https://discord.gg/GJM8bnTg"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#5865F2]/10 hover:bg-[#5865F2]/20 transition-all duration-200 text-[#5865F2]"
