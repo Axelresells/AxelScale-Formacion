@@ -399,7 +399,7 @@ export async function sendPaymentConfirmationEmail(
                   </a>
                 </div>
                 <div style="text-align: center; margin: 20px 0;">
-                  <a href="https://discord.gg/dESsRhG3" class="button" style="background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);">
+                  <a href="https://discord.gg/GJM8bnTg" class="button" style="background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);">
                     Únete a Discord
                   </a>
                 </div>
