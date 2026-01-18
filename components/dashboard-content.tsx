@@ -37,7 +37,7 @@ export function DashboardContent({ modules, totalLessons, showMockBanner }: Dash
         <h1 className="font-display text-4xl sm:text-5xl text-foreground mb-2">
           Bienvenido a <span className="text-gradient-gold text-[#DAA520] ">AXELSCALE</span>
         </h1>
-          <div> <a href="https://discord.gg/dESsRhG3" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white font-semibold px-6 py-3 rounded-lg transition-colors"  > Únete a nuestra comunidad de Discord </a> </div>
+          <div> <a href="https://discord.gg/GJM8bnTg" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white font-semibold px-6 py-3 rounded-lg transition-colors"  > Únete a nuestra comunidad de Discord </a> </div>
       </motion.div>
 
       {/* Video de Presentación */}
